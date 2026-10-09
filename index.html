@@ -33643,7 +33643,7 @@ html.pbr .journey__container-progress-item.pbr-active.pbr-anim.pbr-go{ filter:no
 /* logo: icon + one text run, so "Pabau" and "Client Portal" share size and weight */
 .p2g-logo a{ display:inline-flex !important; align-items:center; gap:8px; line-height:1; }
 .p2g-logo__icon{ height:26px; width:auto; display:block; flex:0 0 auto; }
-.p2g-logo__text{ font-size:20px; font-weight:600; letter-spacing:-.01em; color:#414748; white-space:nowrap; font-family:inherit; }
+.p2g-logo__text{ font-size:20px; font-weight:500; letter-spacing:-.01em; color:#414748; white-space:nowrap; font-family:inherit; }
 @media (max-width:1199.98px){ .p2g-logo__text{ font-size:18px; } }
 
 /* sidebar: checklist sub-items */
@@ -33661,7 +33661,7 @@ html.pbr .journey__container-progress-item.pbr-active.pbr-anim.pbr-go{ filter:no
 /* sidebar: minimise / restore */
 html.pbr #pbr-rail{ transition:width .25s ease, padding .25s ease; }
 html.pbr body{ transition:padding-left .25s ease; }
-:is(html,#pbr-x).pbr.p2g-rail-min{ --rail:72px; }
+:is(html,#pbr-x).pbr.p2g-rail-min{ --rail:66px; }
 :is(html,#pbr-x).pbr.p2g-rail-min #pbr-rail{ padding-left:12px !important; padding-right:12px !important; overflow-x:hidden; }
 :is(html,#pbr-x).pbr.p2g-rail-min #pbr-rail > .pbr-journey.pbr-journey,
 :is(html,#pbr-x).pbr.p2g-rail-min #pbr-rail > .pbr-foot.pbr-foot,
@@ -33931,6 +33931,58 @@ html.pbr #anchor-arrow .optimisation-step__card[data-p2g-done="1"] .card-body a.
 }
 /* side tab: the pulsing dot is green */
 :is(html,#pbr-x).pbr .kb-drawer__handle .kb-drawer__dot{ background:#16C98D !important; box-shadow:0 0 8px rgba(22,201,141,.85) !important; }
+
+/* completed checklist tasks: compact row (title + status), chevron on the right expands the full card */
+html.pbr #anchor-arrow .optimisation-step__card.p2g-compact{ position:relative; }
+html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-body > :not(:first-child){ display:none !important; }
+html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open){ padding-top:10px !important; padding-bottom:10px !important; align-items:center !important; }
+html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-body{ align-self:center !important; }
+html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-body > :first-child{ padding-bottom:0 !important; margin-bottom:0 !important; border-bottom:0 !important; padding-right:330px !important; min-height:32px; }
+html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-action-checked span,
+html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-action-checked p{ display:none !important; }
+html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-action{ padding-top:0 !important; padding-bottom:0 !important; align-self:center !important; }
+html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-banner{
+  top:50% !important; right:58px !important; transform:translateY(-50%) !important; border-radius:999px !important; padding:5px 12px !important;
+}
+.p2g-xbtn{ position:absolute; right:14px; top:50%; transform:translateY(-50%); z-index:3; width:32px; height:32px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center; border:1px solid #E2E8F0; background:#fff; color:#475569; cursor:pointer; padding:0;
+  transition:background .15s ease, color .15s ease, border-color .15s ease; }
+:is(html,#pbr-x) #anchor-arrow button.p2g-xbtn{ background:#fff !important; color:#475569 !important; border:1px solid #E2E8F0 !important; border-radius:50% !important;
+  width:32px !important; height:32px !important; min-height:0 !important; padding:0 !important; box-shadow:none !important; }
+:is(html,#pbr-x) #anchor-arrow button.p2g-xbtn:hover{ background:#F1F5F9 !important; color:#037CD2 !important; border-color:#CBD5E1 !important; }
+.p2g-xbtn:focus-visible{ outline:2px solid #037CD2; outline-offset:2px; }
+.p2g-xbtn svg{ width:16px; height:16px; display:block; transition:transform .2s ease; }
+.optimisation-step__card.p2g-open .p2g-xbtn{ top:46px; transform:none; }
+.optimisation-step__card.p2g-open .p2g-xbtn svg{ transform:rotate(180deg); }
+@media (max-width:760px){
+  html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-body > :first-child{ padding-right:44px !important; }
+  html.pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-banner{ display:none !important; }
+}
+
+/* compact clinical tasks: same height as the other compact rows */
+:is(html,#pbr-x).pbr #anchor-arrow #clinical-optimization-steps .optimisation-step__card.p2g-compact:not(.p2g-open) .card-body > :first-child{
+  padding-bottom:0 !important; margin-bottom:0 !important; border-bottom:0 !important;
+}
+
+/* Subscription: plain white boxes */
+:is(html,#pbr-x).pbr #pbr-sec-6 .subscription__package__box__card,
+:is(html,#pbr-x).pbr #pbr-sec-6 .subscription__package__box__card-2,
+:is(html,#pbr-x).pbr #pbr-sec-6 .pbr-term{ background:#fff !important; background-image:none !important; }
+
+/* sidebar open/close: round "<" button straddling the menu edge near the bottom */
+:is(html,#pbr-x) button.p2g-rail-tab.p2g-rail-fab{
+  position:fixed !important; left:var(--rail) !important; bottom:22px !important; top:auto !important; transform:translateX(calc(-50% - 4px)) !important;
+  order:0 !important; margin:0 !important; z-index:80; width:32px !important; height:32px !important; min-height:0 !important; padding:0 !important;
+  display:none !important; align-items:center; justify-content:center; border-radius:50% !important;
+  background:#16223A !important; color:#CBD5E1 !important; border:1px solid #2B3B57 !important;
+  box-shadow:0 2px 4px rgba(2,8,23,.25), 0 8px 18px -8px rgba(2,8,23,.55) !important;
+  transition:left .25s ease, background .15s ease, color .15s ease !important;
+}
+@media (min-width:1200px){ :is(html,#pbr-x).pbr button.p2g-rail-tab.p2g-rail-fab{ display:inline-flex !important; } }
+:is(html,#pbr-x) button.p2g-rail-tab.p2g-rail-fab:hover{ background:#1E2E4B !important; color:#fff !important; border-color:#3B5378 !important; }
+.p2g-rail-fab svg{ width:15px; height:15px; display:block; transition:transform .25s ease; }
+html.p2g-rail-min .p2g-rail-fab svg{ transform:rotate(180deg); }
+.p2g-rail-fab:focus-visible{ outline:2px solid #24BEE1 !important; outline-offset:2px; }
 </style>
 <script id="p2g-js">(function () {
   /* give the copied titles the same "i" tooltips the original score boxes get */
@@ -34178,12 +34230,12 @@ html.pbr #anchor-arrow .optimisation-step__card[data-p2g-done="1"] .card-body a.
   function isMin() { return document.documentElement.classList.contains('p2g-rail-min'); }
   var btn = document.createElement('button');
   btn.type = 'button'; btn.className = 'p2g-rail-tab';
-  btn.innerHTML = '<span class="p2g-rail-tab__ico">' + ICON + '</span><span class="p2g-rail-tab__label">Close sidebar</span>';
+  btn.innerHTML = ICON;
   function label() {
     var min = isMin();
     btn.setAttribute('aria-label', min ? 'Open sidebar' : 'Close sidebar');
     btn.setAttribute('aria-expanded', min ? 'false' : 'true');
-    btn.dataset.tip = min ? 'Open sidebar' : '';
+    btn.dataset.tip = min ? 'Open sidebar' : 'Close sidebar';
   }
   function set(min) {
     document.documentElement.classList.toggle('p2g-rail-min', min);
@@ -34197,16 +34249,9 @@ html.pbr #anchor-arrow .optimisation-step__card[data-p2g-done="1"] .card-body a.
   btn.addEventListener('click', function () { set(!isMin()); });
   label();
   /* last item of the sidebar, stuck to its bottom (re-added if the sidebar is rebuilt) */
-  function place() {
-    var rail = document.getElementById('pbr-rail'); if (!rail) return;
-    if (btn.parentElement !== rail || rail.lastElementChild !== btn) rail.appendChild(btn);
-  }
-  (function watch() {
-    var rail = document.getElementById('pbr-rail');
-    if (!rail) return setTimeout(watch, 200);
-    place();
-    new MutationObserver(function () { place(); }).observe(rail, { childList: true });
-  })();
+  /* a round button on the sidebar's right edge, near the bottom (half over the menu, half over the page) */
+  btn.classList.add('p2g-rail-fab');
+  document.body.appendChild(btn);
   /* the old bottom row, if a rebuild left one behind */
   (function sweep() { var o = document.querySelector('#pbr-rail .p2g-rail-toggle'); if (o) o.remove(); setTimeout(sweep, 1000); })();
 
@@ -34219,7 +34264,7 @@ html.pbr #anchor-arrow .optimisation-step__card[data-p2g-done="1"] .card-body a.
     return l ? l.textContent.trim() : '';
   }
   function showTip(el) {
-    if (!isMin()) return hideTip();
+    if (!isMin() && !el.classList.contains('p2g-rail-fab')) return hideTip();
     var t = textOf(el); if (!t) return hideTip();
     var r = el.getBoundingClientRect();
     tip.textContent = t;
@@ -34228,7 +34273,7 @@ html.pbr #anchor-arrow .optimisation-step__card[data-p2g-done="1"] .card-body a.
   }
   ['mouseover', 'focusin'].forEach(function (ev) {
     document.addEventListener(ev, function (e) {
-      var el = e.target.closest && e.target.closest('#pbr-rail .pbr-link, #pbr-rail .p2g-rail-tab');
+      var el = e.target.closest && e.target.closest('#pbr-rail .pbr-link, .p2g-rail-fab');
       if (el) showTip(el); else hideTip();
     });
   });
@@ -34354,10 +34399,17 @@ html.pbr #anchor-arrow .optimisation-step__card[data-p2g-done="1"] .card-body a.
       var a = rail.querySelector('.pbr-link.' + w[0]);
       return a ? a.closest('li') : mk(w[0], w[1], w[2], w[3], w[4]);
     });
-    /* the three sit at the end of the menu, in this order (only touch the DOM when needed) */
-    var n = last.children.length;
-    var ok = n >= 3 && last.children[n - 3] === items[0] && last.children[n - 2] === items[1] && last.children[n - 1] === items[2];
-    if (!ok) items.forEach(function (it) { last.appendChild(it); });
+    /* Order Details right below Resources, then Refer and Earn; Share + Log out at the end (only touch the DOM when needed) */
+    var resA = rail.querySelector('.pbr-link[href="#pbr-sec-8"]'), refA = rail.querySelector('.pbr-link[href="#pbr-sec-10"]');
+    var resLi = resA && resA.closest('li'), refLi = refA && refA.closest('li');
+    if (resLi) {
+      if (resLi.nextElementSibling !== items[0]) resLi.after(items[0]);
+      if (refLi && items[0].nextElementSibling !== refLi) items[0].after(refLi);
+    }
+    var tail = resLi ? [items[1], items[2]] : items;
+    var n = last.children.length, k = tail.length;
+    var ok = n >= k && tail.every(function (it, i) { return last.children[n - k + i] === it; });
+    if (!ok) tail.forEach(function (it) { last.appendChild(it); });
     var old = rail.querySelector(':scope > .p2g-rail-bottom'); if (old) old.remove();
   }
   (function watch() {
@@ -34453,13 +34505,52 @@ html.pbr #anchor-arrow .optimisation-step__card[data-p2g-done="1"] .card-body a.
   }
   var n = 0; (function loop() { run(); if (n++ < 30) setTimeout(loop, 300); })();
 })();
+
+/* completed checklist tasks collapse to a single row; the chevron on the right opens the full card */
+(function () {
+  var CHEV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+  function run() {
+    document.querySelectorAll('#anchor-arrow .optimisation-step__card').forEach(function (c) {
+      var done = c.dataset.p2gDone === '1';
+      var btn = c.querySelector(':scope > .p2g-xbtn');
+      if (done && !c.classList.contains('p2g-compact')) {
+        c.classList.add('p2g-compact');
+        if (!btn) {
+          btn = document.createElement('button'); btn.type = 'button'; btn.className = 'p2g-xbtn'; btn.innerHTML = CHEV;
+          var t = c.querySelector('.primary-optimization-card-title');
+          btn.setAttribute('aria-label', 'Show details' + (t ? ' for ' + t.textContent.trim() : ''));
+          btn.setAttribute('aria-expanded', 'false');
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var open = !c.classList.contains('p2g-open');
+            c.classList.toggle('p2g-open', open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.setAttribute('aria-label', (open ? 'Hide' : 'Show') + ' details' + (t ? ' for ' + t.textContent.trim() : ''));
+          });
+          c.appendChild(btn);
+        }
+      } else if (!done && c.classList.contains('p2g-compact')) {
+        c.classList.remove('p2g-compact', 'p2g-open');
+        if (btn) btn.remove();
+      }
+    });
+  }
+  var n = 0; (function loop() { run(); if (n++ < 40) setTimeout(loop, 300); })();
+  document.addEventListener('click', function () { setTimeout(run, 100); setTimeout(run, 800); setTimeout(run, 1800); }, true);
+})();
 </script>
 <style id="p2g-variant-no-journey">
 /* variant: no "Your Journey"; logo at the top of the sidebar; dedicated team card at the bottom */
 :is(html,#pbr-x).pbr #pbr-rail > .pbr-journey.pbr-journey{ display:none !important; }
-:is(html,#pbr-x).pbr #pbr-rail > .p2g-rail-logo{ order:0 !important; display:flex; align-items:center; gap:8px; padding:4px 10px 0; margin:0 0 19px; text-decoration:none !important; }
+:is(html,#pbr-x).pbr #pbr-rail > .p2g-rail-logo{ display:none !important; }
+:is(html,#pbr-x).pbr #pbr-rail > .pbr-brand.pbr-brand.pbr-brand{ display:block !important; order:0 !important; padding:2px 8px 0 12px !important; margin:0 0 19px !important; }
+:is(html,#pbr-x).pbr #pbr-rail > .pbr-brand .kb-lockup{ --kb-lh:30px; color:#fff !important; display:inline-block !important; }
+html.p2g-rail-min #pbr-rail > .pbr-brand.pbr-brand.pbr-brand{ padding:2px 0 0 !important; text-align:center; }
+html.p2g-rail-min #pbr-rail > .pbr-brand .kb-lockup{ width:30px !important; overflow:hidden !important; white-space:nowrap; }
+html.p2g-rail-min #pbr-rail > .pbr-brand .kb-lockup__tag, html.p2g-rail-min #pbr-rail > .pbr-brand .kb-lockup__rule{ display:none !important; }
+.p2g-unused{ order:0 !important; display:flex; align-items:center; gap:8px; padding:4px 10px 0; margin:0 0 19px; text-decoration:none !important; }
 #pbr-rail .p2g-rail-logo svg{ height:26px; width:auto; display:block; flex:0 0 auto; }
-#pbr-rail .p2g-rail-logo span{ color:#fff; font-size:19px; font-weight:600; letter-spacing:-.01em; white-space:nowrap; }
+#pbr-rail .p2g-rail-logo span{ color:#fff; font-size:19px; font-weight:500; letter-spacing:-.01em; white-space:nowrap; }
 html.p2g-rail-min #pbr-rail .p2g-rail-logo{ justify-content:center; padding:6px 0 0; }
 html.p2g-rail-min #pbr-rail .p2g-rail-logo span{ display:none; }
 /* the hero logo hides but keeps its space, so the greeting stays where it is */
@@ -34507,6 +34598,357 @@ html.p2g-rail-min #pbr-rail .p2g-rail-logo span{ display:none; }
     var rail = document.getElementById('pbr-rail'); if (!rail) return setTimeout(watch, 200);
     new MutationObserver(function () { ensure(); }).observe(rail, { childList: true });
   })();
+})();
+</script>
+<style id="p2g-signoff-hover">
+/* Three-Month Sign-Off Call: on hover a grey line (time passed / time left until the call) and the call date fade in */
+.pbr-ms-prog.p2g-signoff{ opacity:0; visibility:hidden; transform:translateX(-4px); transition:opacity .45s ease, transform .45s ease, visibility 0s linear .45s; pointer-events:none; }
+#check_in_call_3_month:hover .pbr-ms-prog.p2g-signoff,
+#check_in_call_3_month:focus-visible .pbr-ms-prog.p2g-signoff{ opacity:1; visibility:visible; transform:none; transition:opacity .45s ease, transform .45s ease, visibility 0s; }
+.pbr-ms-prog.p2g-signoff .pbr-ms-prog__track{ flex-basis:90px !important; width:90px !important; background:#E5E9EF !important; }
+.pbr-ms-prog.p2g-signoff .pbr-ms-prog__fill{ background:#94A3B8 !important; }
+.pbr-ms-prog.p2g-signoff .pbr-ms-prog__txt{ color:#64748B !important; min-width:72px; }
+@media (max-width:1380px){ .pbr-ms-prog.p2g-signoff .pbr-ms-prog__track{ flex-basis:60px !important; width:60px !important; } }
+/* touch screens have no hover: show it all the time */
+@media (hover:none){ .pbr-ms-prog.p2g-signoff{ opacity:1; visibility:visible; transform:none; } }
+/* the journey card fits narrow screens */
+@media (max-width:1199.98px){
+  :is(html,#pbr-x).pbr .pbr-hero > .journey__container_wrapper{ grid-template-columns:minmax(0,1fr) !important; }
+  :is(html,#pbr-x).pbr .pbr-hero > .journey__container_wrapper .tabs,
+  :is(html,#pbr-x).pbr .pbr-hero > .journey__container_wrapper .journey__container{ min-width:0 !important; max-width:100% !important; }
+}
+@media (max-width:640px){
+  /* each milestone: number | name with its progress line underneath | chevron */
+  :is(html,#pbr-x).pbr .pbr-hero .journey__container-progress-item.pbr-ms-link{ align-items:center !important; gap:10px !important; padding:10px 10px 10px 12px !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .journey__container-progress-item > div:nth-child(2){ flex:1 1 auto !important; min-width:0 !important; width:auto !important; flex-wrap:wrap !important; row-gap:6px !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .journey__container-progress-item .progress-description{ flex:1 1 100% !important; width:100% !important; min-width:0 !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .journey__container-progress-item .progress-description span{ white-space:normal !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .journey__container-progress-item .pbr-ms-prog{ flex:1 1 100% !important; margin:0 !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .journey__container-progress-item .pbr-ms-prog__track{ flex:1 1 auto !important; width:auto !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .journey__container-progress-item .pbr-ms-pill{ display:none !important; }
+  .pbr-ms-prog.p2g-signoff .pbr-ms-prog__track{ flex:1 1 auto !important; width:auto !important; }
+}
+</style>
+<script id="p2g-signoff-hover-js">
+(function () {
+  function signOff() {
+    var start = window.PABAU_FIRST_LOGIN ? new Date(window.PABAU_FIRST_LOGIN) : null;
+    if (!start || isNaN(start)) {
+      var k = 'p2gFirstLoginDemo', v = null, demo = new Date(Date.now() - 20 * 864e5).toISOString(); /* demo: ~72 days left */
+      try { v = localStorage.getItem(k); if (!v) { v = demo; localStorage.setItem(k, v); } } catch (e) { v = demo; }
+      start = new Date(v || Date.now());
+    }
+    var end = new Date(start), day = end.getDate(); end.setMonth(end.getMonth() + 3);
+    if (end.getDate() !== day) end.setDate(0); /* 30 Nov -> 28/29 Feb, not early March */
+    var now = Date.now(), span = Math.max(1, end - start);
+    var pct = Math.max(0, Math.min(100, (now - start) / span * 100));
+    var left = Math.max(0, Math.ceil((end - now) / 864e5));
+    var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return { date: end.getDate() + ' ' + M[end.getMonth()] + ' ' + end.getFullYear(), pct: pct, left: left };
+  }
+  function signOffHtml() {
+    var o = signOff();
+    return '<span class="p2g-hj__prog p2g-hj__time" title="' + o.left + ' days until the sign-off call"><span class="p2g-hj__bar"><i style="width:' + o.pct.toFixed(1) + '%"></i></span>' +
+      '<span class="p2g-hj__plabel">' + (o.left ? o.left + 'd' : 'Today') + '</span></span><span class="p2g-hj__date">' + o.date + '</span>';
+  }
+  function add() {
+    var o = signOff();
+    document.querySelectorAll('[id="check_in_call_3_month"]').forEach(function (item) {
+      var row = item.querySelector('.progress-description'); row = row && row.parentElement; if (!row) return;
+      var el = row.querySelector('.pbr-ms-prog.p2g-signoff');
+      if (!el) {
+        el = document.createElement('div'); el.className = 'pbr-ms-prog p2g-signoff';
+        el.innerHTML = '<span class="pbr-ms-prog__track"><span class="pbr-ms-prog__fill"></span></span><span class="pbr-ms-prog__txt"></span>';
+        row.appendChild(el);
+      }
+      el.querySelector('.pbr-ms-prog__fill').style.width = o.pct.toFixed(1) + '%';
+      el.querySelector('.pbr-ms-prog__txt').textContent = o.date;
+      el.title = o.left + ' days until the sign-off call';
+    });
+  }
+  var n = 0; (function loop() { add(); if (n++ < 30) setTimeout(loop, 300); })();
+})();
+</script>
+<style id="p2g-oct09">
+/* 1) sidebar minimised: no "Connect with Your Dedicated Team" tab on the right */
+:is(html,#pbr-x).pbr.p2g-rail-min .kb-drawer__handle.kb-drawer__handle{ display:none !important; }
+/* 4) Three-Month Sign-Off Call: the date appears under the name on hover (instead of the chevron) */
+.p2g-hj__date{ position:absolute; left:0; right:0; bottom:7px; text-align:center; font-size:12px; font-weight:600; line-height:1; color:#64748B;
+  font-variant-numeric:tabular-nums; opacity:0; transform:translateY(-3px); transition:opacity .15s ease, transform .15s ease; pointer-events:none; }
+.p2g-hj__card:hover .p2g-hj__date, .p2g-hj__card:focus-visible .p2g-hj__date{ opacity:1; transform:none; }
+:is(html,#pbr-x) #p2g-hj .p2g-hj__step:last-child button.p2g-hj__card:hover{ padding-bottom:30px !important; margin-bottom:-18px !important; }
+/* time until the sign-off call: dark grey = time passed, light grey = time left */
+#p2g-hj .p2g-hj__time .p2g-hj__bar{ background:#E5E9EF !important; }
+#p2g-hj .p2g-hj__time .p2g-hj__bar i{ background:#94A3B8 !important; }
+#p2g-hj .p2g-hj__time .p2g-hj__plabel{ color:#64748B !important; opacity:0; transition:opacity .15s ease; }
+#p2g-hj .p2g-hj__card:hover .p2g-hj__time .p2g-hj__plabel, #p2g-hj .p2g-hj__card:focus-visible .p2g-hj__time .p2g-hj__plabel{ opacity:1; }
+/* sign-off call: the whole time line only shows on hover */
+#p2g-hj .p2g-hj__card .p2g-hj__time{ max-height:0; margin-top:-10px; opacity:0; overflow:visible; clip-path:inset(0 -20px 100% 0);
+  transition:max-height .45s ease, margin-top .45s ease, opacity .35s ease .1s, clip-path .45s ease; }
+#p2g-hj .p2g-hj__card:hover .p2g-hj__time, #p2g-hj .p2g-hj__card:focus-visible .p2g-hj__time{ max-height:20px; margin-top:0; opacity:1; clip-path:inset(0 -20px 0 0); }
+/* same bar size as the 9/9 line in "9-Step Additional Setup" */
+#p2g-hj .p2g-hj__time .p2g-hj__bar{ flex:0 0 calc(100% - 28.2px) !important; height:6px !important; }
+#p2g-hj .p2g-hj__time .p2g-hj__plabel{ white-space:nowrap; }
+/* the sign-off card grows and the date fades in slowly */
+:is(html,#pbr-x) #p2g-hj .p2g-hj__step:last-child button.p2g-hj__card{ transition:padding-bottom .45s ease, margin-bottom .45s ease, box-shadow .3s ease, transform .3s ease !important; }
+#p2g-hj .p2g-hj__step:last-child .p2g-hj__date{ transition:opacity .35s ease .15s, transform .45s ease; }
+/* connector into a step that hasn't started yet stays grey (step 5 -> 6) */
+#p2g-hj .p2g-hj__step[data-state="progress"]:has(+ .p2g-hj__step[data-state="todo"])::before{ background:#E2E8F0 !important; }
+/* one-line names (Pabau Academy) take the same two-line space, so every progress line sits at the same height */
+#p2g-hj .p2g-hj__card .p2g-hj__name{ min-height:2.6em; display:flex !important; align-items:center; justify-content:center; }
+/* 5) Academy individual progress: a clear slider on the right of the table */
+:is(html,#pbr-x).pbr #pbr-sec-3 .kb-academy__scroll.pbr-ac-box .kb-academy__row{ padding-right:40px !important; }
+:is(html,#pbr-x).pbr #pbr-sec-3 .kb-academy__table .pbr-rail-track.pbr-rail-track{ right:14px !important; width:8px !important; top:12px !important; bottom:12px !important; background:#E3E8EF !important; }
+:is(html,#pbr-x).pbr #pbr-sec-3 .kb-academy__table .pbr-rail-track .pbr-rail-thumb{ background:#037CD2 !important; box-shadow:0 1px 3px rgba(3,124,210,.35); }
+:is(html,#pbr-x).pbr #pbr-sec-3 .kb-academy__table .pbr-rail-track:hover .pbr-rail-thumb, :is(html,#pbr-x).pbr #pbr-sec-3 .kb-academy__table .pbr-rail-track .pbr-rail-thumb.is-drag{ background:#0266AE !important; }
+</style>
+<style id="p2g-responsive">
+/* =====================================================================
+   TABLET + PHONE (everything below the desktop sidebar breakpoint)
+   ===================================================================== */
+@media (max-width:1199.98px){
+  /* top bar: the logo sits top-left, level with the menu button; the copy under the score card goes */
+  :is(html,#pbr-x).pbr .pbr-hero .p2g-logo{ visibility:visible !important; margin:9px 0 26px !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .pbr-hero__brand{ display:none !important; }
+
+  /* greeting, then Zoi's box underneath as a full-width row */
+  :is(html,#pbr-x).pbr .pbr-hero .p2g-greetrow{ flex-direction:column !important; align-items:stretch !important; gap:18px !important; margin-top:0 !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .p2g-greetrow > .kb-greet-text{ padding:0 !important; top:0 !important; align-self:flex-start !important; max-width:none !important; text-align:left !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .p2g-greetrow > .book-meet-w-zoi-box.book-meet-w-zoi-box{
+    display:flex !important; align-items:center !important; gap:14px !important; width:100% !important; max-width:100% !important;
+    margin:0 !important; padding:10px 12px !important; top:0 !important; left:0 !important; right:auto !important; box-sizing:border-box !important;
+    border-radius:16px !important;
+  }
+  :is(html,#pbr-x).pbr .pbr-hero .book-meet-w-zoi-box .book-meet-w-zoi-img{
+    position:relative !important; inset:auto !important; flex:0 0 60px !important; width:60px !important; height:60px !important;
+    margin:0 !important; transform:none !important; overflow:hidden !important; border-radius:14px !important;
+  }
+  :is(html,#pbr-x).pbr .pbr-hero .book-meet-w-zoi-box .book-meet-w-zoi-img img{
+    position:static !important; width:100% !important; height:100% !important; object-fit:cover !important; object-position:top center !important;
+    scale:1 !important; translate:none !important; transform:none !important; margin:0 !important;
+  }
+  :is(html,#pbr-x).pbr .pbr-hero .book-meet-w-zoi-box .book-meet-w-zoi-content{
+    flex:1 1 auto !important; min-width:0 !important; display:flex !important; flex-direction:row !important; align-items:center !important;
+    justify-content:space-between !important; gap:14px !important; margin:0 !important; padding:0 !important;
+  }
+  :is(html,#pbr-x).pbr .pbr-hero .book-meet-w-zoi-box .book-meet-w-zoi-content p{ margin:0 !important; text-align:left !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .book-meet-w-zoi-box .book-meet-w-zoi-btn{ flex:0 0 auto !important; margin:0 !important; }
+  :is(html,#pbr-x).pbr .pbr-hero__inner > .scores_container_wrapper{ margin-top:0 !important; }
+
+  /* journey card lines up with the score card */
+  :is(html,#pbr-x) #p2g-hj.p2g-hj{ width:auto !important; max-width:none !important; margin-left:var(--p2g-gutter, 40px) !important; margin-right:var(--p2g-gutter, 40px) !important; }
+  .p2g-hj__steps{ grid-template-columns:repeat(var(--n), minmax(124px,1fr)) !important; gap:12px !important; }
+  .p2g-hj__step::before{ width:calc(100% + 12px) !important; }
+
+  /* Academy: intro text above the collective gauge so the credit labels never clip */
+  :is(html,#pbr-x).pbr #pbr-sec-3 .academy__collective__progress__box{ grid-template-columns:minmax(0,1fr) !important; row-gap:24px !important; }
+  /* Meetings: 2 x 2 instead of four squeezed columns */
+  :is(html,#pbr-x).pbr #pbr-sec-5 .meetings__success__cards{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+}
+@media (max-width:820px){
+  /* Big Goals: consultant block centred under the text, divider on top instead of the left */
+  :is(html,#pbr-x).pbr #pbr-sec-4 .discovery__call__box__image{
+    border-left:0 !important; border-top:1px solid #E9EFF6 !important; align-self:stretch !important; width:auto !important;
+    display:flex !important; flex-direction:column !important; align-items:center !important; padding:24px 0 0 !important; margin-top:8px !important;
+  }
+}
+@media (max-width:1100px){
+  /* Resources: once the two columns stack, the second title sits on white, so it turns dark */
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .container-heading{ margin:6px 0 14px !important; padding:18px 0 0 !important; border-top:1px solid #E9EFF6; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .container-heading h2{ color:#0F172A !important; -webkit-text-fill-color:#0F172A !important; font-size:18px !important; }
+}
+
+/* ---- tablet: Academy table back on one line per person ---- */
+@media (min-width:641px) and (max-width:1024px){
+  :is(html,#pbr-x).pbr #pbr-sec-3 .kb-academy__scroll .kb-academy__row{
+    grid-template-columns:minmax(0,1.1fr) 132px minmax(0,1.4fr) auto !important;
+    grid-template-areas:"name role prog btn" !important; align-items:center !important; column-gap:16px !important; row-gap:0 !important;
+  }
+}
+
+/* ---- the journey turns into a vertical list (portrait tablet + phone) ---- */
+@media (max-width:900px){
+  .p2g-hj__track{ overflow:visible !important; margin:0 !important; padding:0 !important; }
+  .p2g-hj__steps{ display:flex !important; flex-direction:column !important; gap:12px !important; }
+  .p2g-hj__step{ flex-direction:row !important; align-items:center !important; }
+  .p2g-hj__step::before{ top:50% !important; left:16px !important; width:4px !important; height:calc(100% + 12px) !important; }
+  .p2g-hj__step[data-state="progress"]::before{ background:#037CD2 !important; }
+  .p2g-hj__node{ flex:0 0 36px; }
+  .p2g-hj__pin{ margin:0 0 0 6px !important; border:6px solid transparent !important; border-right-color:#E2E8F0 !important; flex:0 0 auto; }
+  .p2g-hj__step[data-state="done"] .p2g-hj__pin{ border-right-color:#16C98D !important; }
+  .p2g-hj__step[data-state="progress"] .p2g-hj__pin{ border-right-color:#037CD2 !important; }
+  :is(html,#pbr-x) #p2g-hj .p2g-hj__card, :is(html,#pbr-x) #p2g-hj button.p2g-hj__card{
+    flex:1 1 auto !important; width:auto !important; min-width:0 !important; min-height:0 !important; margin:0 !important;
+    border-top-width:1px !important; border-left-width:3px !important; border-left-style:solid !important; border-left-color:#CBD5E1 !important;
+    padding:12px 14px !important; gap:8px !important;
+  }
+  :is(html,#pbr-x) #p2g-hj .p2g-hj__step[data-state="done"] .p2g-hj__card{ border-left-color:#16C98D !important; border-top-color:#E2E8F0 !important; }
+  :is(html,#pbr-x) #p2g-hj .p2g-hj__step[data-state="progress"] .p2g-hj__card{ border-left-color:#037CD2 !important; border-top-color:#E2E8F0 !important; }
+  :is(html,#pbr-x) #p2g-hj .p2g-hj__step[data-state="todo"] .p2g-hj__card{ border-top-color:#E2E8F0 !important; }
+  :is(html,#pbr-x) #p2g-hj button.p2g-hj__card:hover, :is(html,#pbr-x) #p2g-hj button.p2g-hj__card:focus-visible,
+  :is(html,#pbr-x) #p2g-hj .p2g-hj__step:last-child button.p2g-hj__card:hover{ padding-bottom:12px !important; margin-bottom:0 !important; }
+  #p2g-hj .p2g-hj__card .p2g-hj__name{ min-height:0 !important; justify-content:flex-start !important; text-align:left !important; }
+  .p2g-hj__name br{ display:none; }
+  .p2g-hj__chev{ display:none !important; }
+  /* sign-off card: date sits inline under the line instead of floating */
+  #p2g-hj .p2g-hj__date{ position:static !important; text-align:left !important; transform:none !important; }
+  #p2g-hj .p2g-hj__time .p2g-hj__bar{ flex:1 1 auto !important; }
+  .p2g-hj__intro{ text-align:left !important; }
+}
+
+/* touch screens have no hover: the sign-off line, days left and date are always shown */
+@media (hover:none){
+  #p2g-hj .p2g-hj__card .p2g-hj__time{ max-height:none !important; margin-top:0 !important; opacity:1 !important; clip-path:none !important; }
+  #p2g-hj .p2g-hj__time .p2g-hj__plabel, #p2g-hj .p2g-hj__date{ opacity:1 !important; transform:none !important; }
+  :is(html,#pbr-x) #p2g-hj .p2g-hj__step:last-child button.p2g-hj__card{ padding-bottom:30px !important; }
+}
+@media (hover:none) and (max-width:900px){
+  :is(html,#pbr-x) #p2g-hj .p2g-hj__step:last-child button.p2g-hj__card{ padding-bottom:12px !important; }
+}
+
+@media (max-width:1199.98px){
+  /* Refer and Earn lines up with the other sections */
+  :is(html,#pbr-x).pbr #pbr-sec-10{ margin-left:var(--p2g-gutter, 40px) !important; margin-right:var(--p2g-gutter, 40px) !important; width:auto !important; }
+}
+@media (max-width:820px){
+  /* Celebrate: illustration centred right under the text */
+  :is(html,#pbr-x).pbr .celebrate-going-live__illustration{ margin:12px auto 0 !important; align-self:center !important; max-width:240px !important; }
+}
+/* Team on landscape tablets: one line per person, with the column headings */
+@media (min-width:900px) and (max-width:1199.98px){
+  :is(html,#pbr-x).pbr .p2g-team-sec .kb-team__head{ display:grid !important; }
+  :is(html,#pbr-x).pbr .p2g-team-sec .kb-team__head,
+  :is(html,#pbr-x).pbr .p2g-team-sec .kb-team__row{
+    grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) 104px 92px 104px !important; grid-template-areas:none !important;
+    column-gap:12px !important; align-items:center !important;
+  }
+  :is(html,#pbr-x).pbr .p2g-team-sec .kb-team__row > *{ grid-area:auto !important; }
+  :is(html,#pbr-x).pbr .p2g-team-sec .kb-team__mail{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+}
+/* small laptops (sidebar visible, narrow content): score buttons breathe instead of touching the dividers */
+@media (min-width:1200px) and (max-width:1399.98px){
+  :is(html,#pbr-x).pbr #p2g-scores .p2g-btn{ font-size:12.5px !important; padding:0 10px !important; gap:6px !important; }
+  :is(html,#pbr-x).pbr #p2g-scores .p2g-btn > svg:first-child, :is(html,#pbr-x).pbr #p2g-scores .p2g-btn > img:first-child{ display:none !important; }
+}
+/* mobile menu: the checklist caret at normal size */
+.pbr-drawer .p2g-caret, .pbr-drawer svg.p2g-caret{ width:14px !important; height:14px !important; flex:0 0 14px !important; color:#94A3B8; }
+/* =====================================================================
+   PHONE
+   ===================================================================== */
+@media (max-width:640px){
+  :is(html,#pbr-x).pbr .pbr-hero .p2g-logo{ margin-bottom:22px !important; }
+  /* Zoi: text next to the photo, button underneath */
+  :is(html,#pbr-x).pbr .pbr-hero .book-meet-w-zoi-box .book-meet-w-zoi-content{ flex-direction:column !important; align-items:flex-start !important; gap:8px !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .book-meet-w-zoi-box .book-meet-w-zoi-content p br{ display:none; }
+  :is(html,#pbr-x).pbr .pbr-hero .p2g-greetrow > .book-meet-w-zoi-box.book-meet-w-zoi-box{ align-items:flex-start !important; }
+  /* Zoi on phones: white card like the boxes below; her photo on the left (no inner frame), text and button beside it */
+  :is(html,#pbr-x).pbr .pbr-hero .p2g-greetrow > .book-meet-w-zoi-box.book-meet-w-zoi-box{
+    background:#fff !important; border:0 !important; border-radius:24px !important; padding:14px 16px 14px 12px !important;
+    box-shadow:0 1px 2px rgba(15,23,42,.04), 0 6px 16px -4px rgba(15,23,42,.06), 0 24px 48px -12px rgba(15,23,42,.14) !important;
+    align-items:center !important; gap:14px !important; overflow:visible !important;
+  }
+  :is(html,#pbr-x).pbr .pbr-hero .p2g-greetrow > .book-meet-w-zoi-box.book-meet-w-zoi-box::before,
+  :is(html,#pbr-x).pbr .pbr-hero .p2g-greetrow > .book-meet-w-zoi-box.book-meet-w-zoi-box::after{ display:none !important; }
+  :is(html,#pbr-x).pbr .pbr-hero .book-meet-w-zoi-box .book-meet-w-zoi-img{
+    flex:0 0 84px !important; width:84px !important; height:auto !important; overflow:visible !important; border-radius:0 !important; background:none !important; box-shadow:none !important;
+  }
+  :is(html,#pbr-x).pbr .pbr-hero .book-meet-w-zoi-box .book-meet-w-zoi-img img{
+    width:100% !important; height:auto !important; object-fit:contain !important; border-radius:0 !important; box-shadow:none !important;
+  }
+
+  /* completed checklist tasks on phones: one row - check on the left, number + title, chevron on the right */
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open){
+    flex-direction:row !important; align-items:center !important; gap:12px !important; padding:10px 54px 10px 12px !important; min-height:0 !important;
+  }
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-action{
+    flex:0 0 32px !important; width:32px !important; height:32px !important; min-height:0 !important; margin:0 !important; padding:0 !important;
+    border:0 !important; border-radius:50% !important; display:flex !important; align-items:center !important; justify-content:center !important; align-self:center !important;
+  }
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-action::after,
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-action::before{ display:none !important; }
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-action-checked{ width:auto !important; height:auto !important; margin:0 !important; }
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-body{
+    flex:1 1 auto !important; min-width:0 !important; padding:0 !important; margin:0 !important; border:0 !important;
+  }
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .card-body > :first-child{ padding:0 !important; min-height:0 !important; flex-wrap:nowrap !important; align-items:center !important; }
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .primary-optimization-card-title{ flex:1 1 auto !important; min-width:0 !important; line-height:1.25 !important; }
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .optimization-steps-number{ flex:0 0 auto !important; }
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.p2g-compact:not(.p2g-open) .p2g-xbtn{ right:12px !important; }
+
+  /* Latest articles on phones: aligned with the heading, icon + title side by side, compact button */
+  /* the header script pins a 49px gap under every section title inline; pull the list up to ~14px */
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .resources__heading + .resources__box{ margin-top:-35px !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .resources__cards{ padding:0 !important; gap:10px !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .latest_articles_card{
+    display:grid !important; grid-template-columns:32px minmax(0,1fr) !important; column-gap:12px !important; row-gap:8px !important;
+    align-items:center !important; padding:12px 14px !important; margin:0 !important;
+  }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .latest_articles_card > .kb-art-ico{ grid-column:1; grid-row:1 / span 2; align-self:start; margin:0 !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .latest_articles_card_content{ grid-column:2; grid-row:1; margin:0 !important; order:0 !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .latest_articles_card_bottom_title{ margin:0 !important; font-size:13.5px !important; line-height:1.35 !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .latest_articles_card_bottom{ grid-column:2; grid-row:2; margin:0 !important; order:0 !important; justify-content:flex-start !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .latest_articles_card_bottom{ justify-self:start !important; width:auto !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .latest_articles_card_bottom .resources__card-btn{ width:auto !important; margin:0 !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .latest_articles_card_bottom .resources__card-btn{ padding:5px 12px !important; font-size:12.5px !important; min-height:0 !important; height:auto !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-8 .kb-res-right .kb-req{ margin-top:6px !important; padding-top:12px !important; }
+
+  /* score card: a little tighter */
+  #p2g-scores .p2g-box{ padding-top:16px !important; padding-bottom:16px !important; }
+
+  /* journey: tabs fit the width */
+  .p2g-hj__tabs{ gap:4px !important; }
+  .p2g-hj__tab{ min-width:0 !important; flex:1 1 0; padding:0 8px !important; font-size:13px !important; }
+  .p2g-hj__tab[data-state="done"]{ padding-left:8px !important; padding-right:8px !important; }
+  .p2g-hj__ok{ width:16px !important; height:16px !important; flex-basis:16px !important; }
+  .p2g-hj__panel{ padding:18px 14px 16px !important; }
+  .p2g-hj__intro{ font-size:14px !important; margin-bottom:16px !important; padding-bottom:14px !important; }
+
+  /* checklist buttons: long labels wrap cleanly instead of squeezing */
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.card .card-body a.primary-optimization-card-btn,
+  :is(html,#pbr-x).pbr #anchor-arrow .optimisation-step__card.card .card-body a.primary-optimization-container-card-btn{
+    height:auto !important; min-height:38px !important; padding-top:8px !important; padding-bottom:8px !important; line-height:1.25 !important; white-space:normal !important;
+  }
+
+  /* Academy table: name + role, then progress, then the button */
+  :is(html,#pbr-x).pbr #pbr-sec-3 .kb-academy__scroll .kb-academy__row{
+    grid-template-columns:minmax(0,1fr) auto !important; grid-template-areas:"name role" "prog prog" "btn btn" !important;
+    align-items:center !important; row-gap:10px !important; column-gap:10px !important;
+  }
+  :is(html,#pbr-x).pbr #pbr-sec-3 .kb-academy__role{ width:auto !important; min-width:0 !important; }
+
+  /* Meetings: single column, so no reserved empty space */
+  :is(html,#pbr-x).pbr #pbr-sec-5 .meetings__success__cards{ grid-template-columns:minmax(0,1fr) !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-5 .meetings__success__card .meetings__success__card__content{ min-height:0 !important; height:auto !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-5 .meetings__success__card .meetings__success__card__notice__desc{ min-height:0 !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-5 .meetings__success__card{ min-height:0 !important; height:auto !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-5 .meetings__success__card__notice__desc:empty{ display:none !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-5 .meetings__success__card__cta__wrapper{ padding-top:12px !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-5 .meetings__success__card__cta p{ margin-bottom:12px !important; }
+
+  /* Subscription: cards only as tall as their content */
+  :is(html,#pbr-x).pbr #pbr-sec-6 .subscription__package__box__card .subscription__package__box__card__body > div{ min-height:0 !important; height:auto !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-6 .subscription__package__box__card, :is(html,#pbr-x).pbr #pbr-sec-6 .subscription__package__box__card__body{ min-height:0 !important; height:auto !important; }
+  :is(html,#pbr-x).pbr #pbr-sec-6 .subscription__package__box__card__body{ padding:18px 16px !important; }
+
+  /* footer */
+  :is(html,#pbr-x).pbr #colophon .elementor-widget-container p{ font-size:12.5px !important; }
+}
+@media (max-width:380px){
+  .p2g-hj__tab{ font-size:12px !important; padding:0 6px !important; }
+  .p2g-hj__ok{ display:none !important; }
+}
+</style>
+<script id="p2g-responsive-js">
+/* keep the journey card's side margins equal to the hero's content edge on tablet/phone */
+(function () {
+  function sync() {
+    var inner = document.querySelector('.pbr-hero__inner'), hero = document.querySelector('.pbr-hero');
+    if (!inner || !hero) return;
+    var g = Math.round(inner.getBoundingClientRect().left - hero.getBoundingClientRect().left);
+    if (g >= 0) document.documentElement.style.setProperty('--p2g-gutter', g + 'px');
+  }
+  var n = 0; (function run() { sync(); if (n++ < 20) setTimeout(run, 300); })();
+  window.addEventListener('resize', function () { setTimeout(sync, 100); });
 })();
 </script>
 </body></html>
